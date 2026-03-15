@@ -9,7 +9,7 @@ use super::{
         default_model, default_true, validate_stop, ChatLogProbs, ContentPart, Function,
         FunctionCall, FunctionChoice, GenerationRequest, ResponseFormat, StreamOptions,
         StringOrArray, Tool, ToolCall, ToolCallDelta, ToolChoice, ToolChoiceValue, ToolReference,
-        Usage,
+        Usage, Thinking
     },
     sampling_params::{validate_top_k_value, validate_top_p_value},
 };
@@ -174,6 +174,8 @@ pub struct ChatCompletionRequest {
     #[deprecated(note = "Use max_completion_tokens instead")]
     #[validate(range(min = 1))]
     pub max_tokens: Option<u32>,
+
+    pub thinking: Option<Thinking>,
 
     /// An upper bound for the number of tokens that can be generated for a completion
     #[validate(range(min = 1))]

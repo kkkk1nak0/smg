@@ -396,6 +396,12 @@ pub struct ToolCall {
     pub function: FunctionCallResponse,
 }
 
+#[derive(Debug, Clone, Deserialize, Serialize, schemars::JsonSchema)]
+pub struct Thinking {
+    #[serde(rename = "type")]
+    pub thinking_type: String, // "enable" or "disable" 
+}
+
 /// Deprecated `function_call` field from the OpenAI API.
 /// Can be `"none"`, `"auto"`, or `{"name": "function_name"}`.
 #[derive(Debug, Clone)]
